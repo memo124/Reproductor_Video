@@ -1,6 +1,8 @@
-# NombreDeTuProyecto
+# Reproductor de video
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+
+El proyecto esta hecho para un proyecto de presentación de cursos a los estudiantes, usando la API de youtube y haciendole controles personalizados.
 
 ## Development server
 
@@ -25,3 +27,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
