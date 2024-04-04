@@ -1,11 +1,28 @@
-<div id="player"></div>
-<button (click)="togglePlayPause()">
-  {{ player && player.getPlayerState() === 1 ? 'Pausar' : 'Reproducir' }}
-</button>
-<div> Tiempo transcurrido: {{ formatTime(videoProgress) }}</div>
-<div> Duración total: {{ formatTime(getVideoDuration()) }}</div>
+<div class="player">
+  <div id="player" ></div>
+</div>
+<div class="control">
+  <div class="progress">
+    <input type="range" min="0" [max]="getVideoDuration()" step="1" [(ngModel)]="videoProgress" (input)="seekTo()" id="myRange" class="duration">
+  </div>
+</div>
 
-<input type="range" min="0" max="100" step="1" [(ngModel)]="volume" (input)="setVolume()">
-<input type="range" min="0" [max]="getVideoDuration()" step="1" [(ngModel)]="videoProgress" (input)="seekTo()">
-<button (click)="toggleFullScreen()">Pantalla completa</button>
-<button (click)="exitFullScreen()">Salir de pantalla completa</button>
+<div class="container">
+  <div class="right">
+    <div class="button">
+      <button (click)="togglePlayPause()" class="action btn">
+        <img src="/assets/icons/{{player && player.getPlayerState() === 1 ? 'pause-fill' : 'play-fill'}}.svg" alt="Bootstrap" width="15" height="15">
+      </button>
+      <div class="action"> {{ formatTime(videoProgress) }} / {{ formatTime(getVideoDuration()) }}</div>
+      <input type="range" min="0" max="100" step="1" [(ngModel)]="volume" (input)="setVolume()" class="volume">
+
+     </div>
+  </div>
+  <div class="left">
+    <div class="button">
+      <button (click)="toggleFullScreen()" class="action btn">Pantalla completa</button>
+      <button (click)="exitFullScreen()" class="action btn">Salir de pantalla completa</button>
+    </div>
+  </div>
+
+</div>

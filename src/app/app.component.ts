@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   videoId: string = '1n1LQs83T9w';
   volume: number = 100;
   videoProgress: number = 0;
+  videoProgressComplete: number = 0;
 
   constructor(private elementRef: ElementRef,private cdr: ChangeDetectorRef) { }
 
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit {
     window['onYouTubeIframeAPIReady'] = () => {
       this.initPlayer();
     };
+
   }
 
   // Inicializar el reproductor de YouTube
@@ -60,8 +62,12 @@ export class AppComponent implements OnInit {
           if (event.data == window.YT.PlayerState.PLAYING) {
             setInterval(() => {
               this.videoProgress = this.player.getCurrentTime();
+              this.videoProgressComplete = this.player.getDuration();
+              const rangeSlider = document.getElementById('myRange') as HTMLInputElement;
+              const valor = (this.videoProgress-0)/(this.videoProgressComplete-0)*100;
+              rangeSlider.style.background = `linear-gradient(to right,#837F7E 0%, #837F7E ${valor}%,#F7E200 ${valor}%,#F7E200 100%)`;
               this.cdr.detectChanges();
-            }, 1000);
+            }, 500);
           }
         }
       }
