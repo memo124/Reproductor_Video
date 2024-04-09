@@ -1,13 +1,42 @@
 
-.player{
+.video-container{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 82vh;
+  border: #2b3b3b outset;
+  box-shadow: 10px 20px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.options{
+  width: 100%;
+padding: 0px 10px 0px 10px;
+}
+.player2{
+  position: relative;
+  width: 100%;
+  height: 700px;
+}
+
+.player #player{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
 }
 .control>progress{
   display: flex;
     justify-content: center;
     padding-top: 10px;
     margin: 50px;
+}
+
+.progress{
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .duration{
@@ -61,10 +90,75 @@
 }
 .action{
   margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9rem;
 }
 
 .btn{
-  background-color: cadetblue;
-  color: aliceblue;
-  border-radius: 3em;
+  background-color: #007BFF; /* Azul Bootstrap */
+  border: none;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Hace el botón completamente redondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+
+.btn:hover, .btn:focus {
+  background-color: #0056b3; /* Un azul un poco más oscuro para hover */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra más pronunciada para efecto de elevación */
+  outline: none; /* Remueve el borde que aparece al enfocar el botón */
+}
+
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre el icono y el deslizador */
+}
+
+.volume-icon {
+  width: 24px;
+  height: 24px;
+  user-select: none;
+}
+
+.volume-slider {
+  -webkit-appearance: none; /* Remueve el estilo por defecto para WebKit/Blink */
+  appearance: none;
+  width: 100px; /* O el tamaño que prefieras */
+  height: 3px; /* Altura de la barra deslizante */
+  background: #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px; /* Tamaño del control deslizante */
+  height: 15px;
+  background: #4CAF50; /* Color de fondo del control deslizante */
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 15px; /* Tamaño del control deslizante */
+  height: 15px;
+  background: #4CAF50;
+  cursor: pointer;
+  border-radius: 50%;
 }

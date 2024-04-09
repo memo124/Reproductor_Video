@@ -1,28 +1,40 @@
-<div class="player">
-  <div id="player" ></div>
-</div>
-<div class="control">
-  <div class="progress">
-    <input type="range" min="0" [max]="getVideoDuration()" step="1" [(ngModel)]="videoProgress" (input)="seekTo()" id="myRange" class="duration">
+<div class="video-container">
+  <div class="player2">
+    <div id="player" class="youtube"></div>
   </div>
-</div>
+  <div class="options">
+    <div class="control">
+      <div class="progress">
+        <input type="range" min="0" [max]="getVideoDuration()" step="1" [(ngModel)]="videoProgress" (input)="seekTo()" id="myRange" class="duration">
+      </div>
+    </div>
 
-<div class="container">
-  <div class="right">
-    <div class="button">
-      <button (click)="togglePlayPause()" class="action btn">
-        <img src="/assets/icons/{{player && player.getPlayerState() === 1 ? 'pause-fill' : 'play-fill'}}.svg" alt="Bootstrap" width="15" height="15">
-      </button>
-      <div class="action"> {{ formatTime(videoProgress) }} / {{ formatTime(getVideoDuration()) }}</div>
-      <input type="range" min="0" max="100" step="1" [(ngModel)]="volume" (input)="setVolume()" class="volume">
+    <div class="container">
+      <div class="right">
+        <div class="button">
+          <button (click)="togglePlayPause()" class="action btn">
+            <img src="/assets/icons/{{player && player.getPlayerState() === 1 ? 'pause-fill' : 'play-fill'}}.svg" alt="Bootstrap" width="15" height="15">
+          </button>
+          <div class="action"> {{ formatTime(videoProgress) }} / {{ formatTime(getVideoDuration()) }}</div>
 
-     </div>
-  </div>
-  <div class="left">
-    <div class="button">
-      <button (click)="toggleFullScreen()" class="action btn">Pantalla completa</button>
-      <button (click)="exitFullScreen()" class="action btn">Salir de pantalla completa</button>
+          <div class="volume-control">
+            <img src="/assets/icons/volume-up.svg" alt="Bootstrap" width="15" height="15">
+            <input type="range" min="0" max="100" step="1" [(ngModel)]="volume" (input)="setVolume()" class="volume-slider">
+          </div>
+         </div>
+      </div>
+      <div class="left">
+        <div class="button">
+          <ng-container [ngSwitch]="fullscreen">
+            <button *ngSwitchCase="false" (click)="toggleFullScreen()" class="action btn">
+              <img src="/assets/icons/{{fullscreen === false ? 'arrows-fullscreen' : 'play-fill'}}.svg" alt="Bootstrap" width="15" height="15">
+              </button>
+            <button *ngSwitchCase="true" (click)="exitFullScreen()" class="action btn">Salir de pantalla completa</button>
+          </ng-container>
+
+        </div>
+      </div>
+
     </div>
   </div>
-
 </div>

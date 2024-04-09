@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   volume: number = 100;
   videoProgress: number = 0;
   videoProgressComplete: number = 0;
+  fullscreen:boolean = false;
 
   constructor(private elementRef: ElementRef,private cdr: ChangeDetectorRef) { }
 
@@ -44,8 +45,8 @@ export class AppComponent implements OnInit {
   // Inicializar el reproductor de YouTube
   initPlayer() {
     this.player = new window.YT.Player('player', {
-      height: '700',
-      width: '800',
+      height: '100%',
+      width: '100%',
       videoId: this.videoId,
       playerVars:{
         playersinline:1,
@@ -67,7 +68,7 @@ export class AppComponent implements OnInit {
               const valor = (this.videoProgress-0)/(this.videoProgressComplete-0)*100;
               rangeSlider.style.background = `linear-gradient(to right,#837F7E 0%, #837F7E ${valor}%,#F7E200 ${valor}%,#F7E200 100%)`;
               this.cdr.detectChanges();
-            }, 500);
+            }, 1000);
           }
         }
       }
